@@ -482,7 +482,7 @@ def problem1c(m):
      """
     sum = 0
     for k in range(10):
-        if is_prime(m+k) != True:
+        if is_prime(m+k) != False:
             sum = sum + m + k
     return sum
     ############################################################################
