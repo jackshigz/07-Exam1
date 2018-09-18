@@ -104,7 +104,7 @@ def problem1a(rectangle, square, thickness, window):
 
 
     # --------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
+    # DONE: 2. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # --------------------------------------------------------------------------
 

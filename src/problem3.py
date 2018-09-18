@@ -2,8 +2,8 @@
 Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Haoran Shi.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -87,6 +87,26 @@ def problem3(point, length, delta, window):
       :type delta:   int
       :type window:  rg.RoseWindow
     """
+    x = point.x
+    y = point.y
+    point1 = rg.Point(x,y)
+    point2 = rg.Point(x,y+length)
+    line1 = rg.Line(point1,point2)
+    line1.color = 'black'
+    line1.thickness = 3
+    line1.attach_to(window)
+
+    n = length//delta + 1
+    for k in range(n):
+        line = rg.Line(rg.Point(x,y + delta*k),rg.Point(x+length + k*20,y + delta*k))
+        if k%3 ==1:
+            line.color = 'magenta'
+        if k%3 == 2:
+            line.color = 'cyan'
+        if k%3 == 0:
+            line.color = 'spring green'
+        line.attach_to(window)
+    window.render()
     # --------------------------------------------------------------------------
     # TODO: 2. Implement and test this function.
     # TODO (continued):  IMPORTANT: Use this ITERATIVE ENHANCEMENT PLAN:

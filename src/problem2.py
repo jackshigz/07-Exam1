@@ -2,8 +2,8 @@
 Exam 1, problem 2.
 
 Authors: David Mutchler, Vibha Alangar, Valerie Galluzzi, Mark Hays,
-         Amanda Stouder, their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         Amanda Stouder, their colleagues and Haoran Shi.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import testing_helper
 import time
@@ -16,11 +16,29 @@ def main():
     run_test_problem2b()
     run_test_problem2c()
 
+def is_prime(n):
+    """
+    What comes in:  An integer n >= 2.
+    What goes out:
+      -- Returns True if the given integer is prime,
+         else returns False.
+    Side effects:   None.
+    Examples:
+      -- is_prime(11) returns  True
+      -- is_prime(12) returns  False
+      -- is_prime(2)  returns  True
+    Note: The algorithm used here is simple and clear but slow.
+    """
+    for k in range(2, (n // 2) + 1):
+        if n % k == 0:
+            return False
+
+    return True
 
 def problem2a_testing():
     """ Tests the   sum_of_digits_of_sum_of_factors   function. """
     ############################################################################
-    #  TODO: 2. Implement this TEST function.  See the IMPORTANT NOTE below.
+    #  DONE: 2. Implement this TEST function.  See the IMPORTANT NOTE below.
     #     This problem TESTS the    sum_of_digits_of_sum_of_factors    function
     #     that is defined below.  Include at least **   4   ** tests.
     #     Use the usual format:
@@ -45,6 +63,29 @@ def problem2a_testing():
     print('Testing the   sum_of_digits_of_sum_of_factors   function:')
     print('---------------------------------------------------------')
 
+    # Test 1:
+    expected = 11
+    answer = sum_of_digits_of_sum_of_factors(28)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 2:
+    expected = 2
+    answer = sum_of_digits_of_sum_of_factors(2)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 3:
+    expected = 4
+    answer = sum_of_digits_of_sum_of_factors(3)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    # Test 4:
+    expected = 6
+    answer = sum_of_digits_of_sum_of_factors(5)
+    print('Test 1 expected:', expected)
+    print('       actual:  ', answer)
 
 def sum_of_digits_of_sum_of_factors(n):
     """
@@ -70,12 +111,12 @@ def sum_of_digits_of_sum_of_factors(n):
 
 
 ################################################################################
-# TODO: 3.  READ the green doc-string for the   number_of_factors   function
+# DONE: 3.  READ the green doc-string for the   number_of_factors   function
 #    defined below.  You do NOT need to understand its implementation,
 #    just its specification (per the doc-string).
 #    You should  ** CALL **  that function as needed in implementing
 #    the other functions.
-# TODO (continued):  After you have READ this _TODO_, change its _TODO_ to DONE.
+# DONE (continued):  After you have READ this _TODO_, change its _TODO_ to DONE.
 ################################################################################
 
 def number_of_factors(n):
@@ -309,6 +350,13 @@ def problem2b(a, b, x):
          is great than or equal to 5 are: 16, 18, 20, and 24,
          and the sum   16 + 18 + 20 + 24   is 78.
      """
+    sum = 0
+    for k in range(b-a+1):
+        if number_of_factors(a+k) >= x:
+            sum = sum + a + k
+
+    return sum
+
     ############################################################################
     # TODO: 4. Implement and test this function.  See the IMPORTANT NOTE below!
     #          Tests have been written for you (above).
@@ -432,6 +480,11 @@ def problem1c(m):
              11 13 17 19,
            and 11 + 13 + 17 + 19 = 60.
      """
+    sum = 0
+    for k in range(10):
+        if is_prime(m+k) != True:
+            sum = sum + m + k
+    return sum
     ############################################################################
     # TODO: 4. Implement and test this function.  See the IMPORTANT NOTE below!
     #          Tests have been written for you (above).
